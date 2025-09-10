@@ -1,0 +1,34 @@
+:root { --brand:#0A1F3D; --accent:#00C4A2; }
+html, body { height: 100%; }
+body { background: #0B1220; }
+
+/* Slide basics */
+.slide { height: 100dvh; width: 100%; scroll-snap-align: start; }
+.deck { scroll-snap-type: y mandatory; overflow-y: auto; height: 100dvh; }
+
+/* Print: one slide per page */
+@media print {
+  .deck { height: auto; overflow: visible; }
+  .slide { height: 100vh; page-break-after: always; }
+  .no-print { display: none !important; }
+  iframe { display: none !important; } /* hide iframes for print */
+}
+
+/* Simple fade-in */
+.fade-enter { opacity: 0; transform: translateY(8px); }
+.fade-enter-active { opacity: 1; transform: translateY(0); transition: all 300ms ease; }
+
+/* Thumb images */
+.thumb { width: 100%; height: 220px; object-fit: cover; border-radius: 0.75rem; }
+@media (min-width: 768px) { .thumb { height: 260px; } }
+
+/* Aspect ratio helper (so we don't rely on Tailwind plugin) */
+.aspect-video { position: relative; width: 100%; padding-top: 56.25%; }
+.aspect-video > iframe, .aspect-video > video {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+
+/* Brand helpers (if you need them in custom CSS) */
+.bg-brand-dark { background-color: var(--brand); }
+.text-brand-accent { color: var(--accent); }
+.bg-brand-accent { background-color: var(--accent); }

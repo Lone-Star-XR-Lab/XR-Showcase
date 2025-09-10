@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XR for Education & Life — Visual Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0A1F3D',
+              accent: '#00C4A2'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+   <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="text-white">
+  <!-- Top banner / kiosk mode notice -->
+  <div id="banner" class="no-print sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur text-white">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-3 text-sm">
+      <span class="font-semibold">XR Showcase</span>
+      <span class="opacity-80">Use ↑ ↓ or ◀ ▶ to navigate • Press F to go full screen • P to toggle Presenter Notes • G to jump to slide</span>
+      <div class="ml-auto flex gap-2 items-center">
+        <button id="btnPrev" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20">Prev</button>
+        <button id="btnNext" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20">Next</button>
+      </div>
+    </div>
+    <!-- Progress bar -->
+    <div class="h-1 w-full bg-white/10">
+      <div id="progress" class="h-1 bg-brand-accent w-0"></div>
+    </div>
+  </div>
+
+  <main id="deck" class="deck">
+
+    <!-- Slide 0: Title -->
+    <section class="slide flex items-center justify-center p-8 bg-gradient-to-br from-brand-dark to-slate-900">
+      <div class="max-w-5xl w-full text-center fade-enter">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">XR for Education & Life</h1>
+        <p class="mt-4 text-lg md:text-2xl opacity-90">Immersive learning with Virtual, Augmented, and Mixed Reality</p>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold">VR</h3>
+            <p class="opacity-80">Fully immersive environments for skills practice and exploration.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold">AR</h3>
+            <p class="opacity-80">Digital overlays on the real world for guided tasks and learning aids.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold">MR</h3>
+            <p class="opacity-80">Interactive virtual content anchored to your real space.</p>
+          </div>
+        </div>
+        <p class="mt-10 text-sm opacity-70">Lone Star College — XR Lab (Room E251) • Meta Quest 3 headsets</p>
+      </div>
+      <aside class="presenter-notes hidden">Open strong. Define VR/AR/MR at a glance. Invite people to imagine holding a tool or standing in a scene.</aside>
+    </section>
+
+    <!-- Slide 1: Why XR (visuals) -->
+    <section class="slide flex items-center p-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-black">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center fade-enter">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-bold">Why XR supercharges learning</h2>
+          <ul class="mt-6 space-y-4 text-lg">
+            <li>⚡ <span class="font-semibold">Active, hands-on</span> practice instead of passive watching.</li>
+            <li>🧠 <span class="font-semibold">Better recall</span> from doing and experiencing.</li>
+            <li>💬 <span class="font-semibold">Shared presence</span> enables collaboration and coaching.</li>
+            <li>🫶 <span class="font-semibold">Empathy & perspective</span> through lived scenarios.</li>
+            <li>🛡️ <span class="font-semibold">Safe repetition</span> for rare, risky, or expensive tasks.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="grid grid-cols-2 gap-3">
+            <a href="https://www.youtube.com/watch?v=orV6q5Ojo0k" target="_blank">
+              <img class="thumb border border-white/10" alt="Titanic VR"
+                   src="/images/titanic-vr.jpg"
+                   onerror="this.onerror=null;this.src='https://img.youtube.com/vi/orV6q5Ojo0k/hqdefault.jpg';" />
+            </a>
+            <a href="https://www.youtube.com/watch?v=5jTCRuue_yo" target="_blank">
+              <img class="thumb border border-white/10" alt="Vermillion"
+                   src="/images/vermillion.jpg"
+                   onerror="this.onerror=null;this.src='https://img.youtube.com/vi/5jTCRuue_yo/hqdefault.jpg';" />
+            </a>
+            <a href="https://www.youtube.com/watch?v=G4XLYS1hUQU" target="_blank">
+              <img class="thumb border border-white/10" alt="Noun Town"
+                   src="/images/noun-town.jpg"
+                   onerror="this.onerror=null;this.src='https://img.youtube.com/vi/G4XLYS1hUQU/hqdefault.jpg';" />
+            </a>
+            <a href="https://www.youtube.com/watch?v=Qo158novmVY" target="_blank">
+              <img class="thumb border border-white/10" alt="Awake: Heart"
+                   src="/images/awake-heart.jpg"
+                   onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Qo158novmVY/hqdefault.jpg';" />
+            </a>
+          </div>
+          <p class="mt-3 text-sm opacity-70">Tip: click to open the trailer in a new tab.</p>
+        </div>
+      </div>
+      <aside class="presenter-notes hidden">Keep pace brisk. One sentence per bullet, then show a quick clip.</aside>
+    </section>
+
+    <!-- Slide 2: Subjects / Use Cases (image-first cards) -->
+    <section class="slide flex items-center p-8 bg-slate-900">
+      <div class="max-w-7xl mx-auto fade-enter">
+        <h2 class="text-3xl md:text-5xl font-bold">Where XR shines (by subject)</h2>
+        <div class="mt-8 grid md:grid-cols-3 gap-5">
+          <!-- Healthcare -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">Healthcare</h3>
+            <img class="thumb border border-white/10 mb-3" alt="Awake Heart"
+                 src="/images/awake-heart.jpg"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Qo158novmVY/hqdefault.jpg';" />
+            <ul class="space-y-2 opacity-90">
+              <li>Awake: Heart & ECG • CPR Simulator</li>
+              <li>Anatomy, patient scenarios</li>
+              <li>Sterile technique & lab safety</li>
+            </ul>
+          </div>
+          <!-- STEM -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">STEM</h3>
+            <img class="thumb border border-white/10 mb-3" alt="Labster"
+                 src="/images/labster.jpg"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/l8LXQq5_VL0/hqdefault.jpg';" />
+            <ul class="space-y-2 opacity-90">
+              <li>Labster virtual labs</li>
+              <li>Physics & chemistry visualizations</li>
+              <li>Space & earth science fieldwork</li>
+            </ul>
+          </div>
+          <!-- Humanities -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">History & Humanities</h3>
+            <img class="thumb border border-white/10 mb-3" alt="Titanic VR"
+                 src="/images/titanic-vr.jpg"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/orV6q5Ojo0k/hqdefault.jpg';" />
+            <ul class="space-y-2 opacity-90">
+              <li>Titanic VR • MLK: Now Is the Time</li>
+              <li>JFK Memento • Notes on Blindness</li>
+              <li>Archaeology & world heritage</li>
+            </ul>
+          </div>
+          <!-- Fine Arts -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">Fine Arts</h3>
+            <img class="thumb border border-white/10 mb-3" alt="Vermillion"
+                 src="/images/vermillion.jpg"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/5jTCRuue_yo/hqdefault.jpg';" />
+            <ul class="space-y-2 opacity-90">
+              <li>Vermillion (oil painting studio)</li>
+              <li>3D sculpture & spatial design</li>
+              <li>XR galleries & performances</li>
+            </ul>
+          </div>
+          <!-- Trades -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">Trades & Workforce</h3>
+            <img class="thumb border border-white/10 mb-3" alt="Transfr"
+                 src="/images/transfr.jpg"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/lWuwo-9oO-0/hqdefault.jpg';" />
+            <ul class="space-y-2 opacity-90">
+              <li>Transfr job training modules</li>
+              <li>Safety, tools, procedures</li>
+              <li>Soft skills: customer service</li>
+            </ul>
+          </div>
+          <!-- Languages -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">Languages & Communication</h3>
+            <img class="thumb border border-white/10 mb-3" alt="Noun Town"
+                 src="/images/noun-town.jpg"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/G4XLYS1hUQU/hqdefault.jpg';" />
+            <ul class="space-y-2 opacity-90">
+              <li>Noun Town (immersion)</li>
+              <li>Public speaking practice</li>
+              <li>ASL/interpretation scenarios</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <aside class="presenter-notes hidden">Pick 3–4 subjects that match your audience; keep moving.</aside>
+    </section>
+
+    <!-- Slide 3: Quick Demos (inline autoplay iframes + links) -->
+    <section class="slide flex items-center p-8 bg-slate-950">
+      <div class="max-w-6xl mx-auto fade-enter">
+        <h2 class="text-3xl md:text-5xl font-bold text-center">Quick Demos (Play 60–120s)</h2>
+        <p class="mt-3 text-center opacity-80">Muted, looping previews below; click titles to open full videos in new tabs.</p>
+
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+          <!-- Vermillion autoplay -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">
+              <a target="_blank" href="https://www.youtube.com/watch?v=5jTCRuue_yo" class="hover:underline">Vermillion — Painting Studio</a>
+            </h3>
+            <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+              <iframe
+                src="https://www.youtube.com/embed/5jTCRuue_yo?autoplay=1&mute=1&loop=1&playlist=5jTCRuue_yo&controls=0&modestbranding=1&rel=0"
+                title="Vermillion Trailer" frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                allowfullscreen class="w-full h-full"></iframe>
+            </div>
+          </div>
+
+          <!-- Noun Town autoplay -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">
+              <a target="_blank" href="https://www.youtube.com/watch?v=G4XLYS1hUQU" class="hover:underline">Noun Town — Language Learning (MR)</a>
+            </h3>
+            <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+              <iframe
+                src="https://www.youtube.com/embed/G4XLYS1hUQU?autoplay=1&mute=1&loop=1&playlist=G4XLYS1hUQU&controls=0&modestbranding=1&rel=0"
+                title="Noun Town MR Trailer" frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                allowfullscreen class="w-full h-full"></iframe>
+            </div>
+          </div>
+
+          <!-- Titanic VR (thumb + link) -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">
+              <a target="_blank" href="https://www.youtube.com/watch?v=orV6q5Ojo0k" class="hover:underline">Titanic VR — Launch Trailer</a>
+            </h3>
+            <a target="_blank" href="https://www.youtube.com/watch?v=orV6q5Ojo0k">
+              <img class="thumb border border-white/10" alt="Titanic VR"
+                   src="/images/titanic-vr.jpg"
+                   onerror="this.onerror=null;this.src='https://img.youtube.com/vi/orV6q5Ojo0k/hqdefault.jpg';" />
+            </a>
+          </div>
+
+          <!-- Labster (thumb + link) -->
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-semibold mb-3">
+              <a target="_blank" href="https://www.youtube.com/watch?v=l8LXQq5_VL0" class="hover:underline">Labster — Biology Virtual Labs</a>
+            </h3>
+            <a target="_blank" href="https://www.youtube.com/watch?v=l8LXQq5_VL0">
+              <img class="thumb border border-white/10" alt="Labster"
+                   src="/images/labster.jpg"
+                   onerror="this.onerror=null;this.src='https://img.youtube.com/vi/l8LXQq5_VL0/hqdefault.jpg';" />
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-6 p-5 rounded-2xl bg-white/5 border border-white/10">
+          <h3 class="text-xl font-semibold mb-3">Empathy & Life Skills</h3>
+          <p class="opacity-80 mb-3 text-sm">Some content includes sensory intensity; give a brief content note first.</p>
+          <div class="flex flex-wrap gap-2">
+            <a target="_blank" href="https://www.youtube.com/watch?v=DgDR_gYk_a8" class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20">Autism TMI — 360° Experience</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=Qo158novmVY" class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20">Awake: Heart — Trailer</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=X9pJiWHM5BM" class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20">Awake: ECG — Trailer</a>
+            <a target="_blank" href="https://www.youtube.com/watch?v=lWuwo-9oO-0" class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20">TRANSFR — Overview</a>
+          </div>
+        </div>
+      </div>
+      <aside class="presenter-notes hidden">Have these pre-opened in tabs. If bandwidth is limited, use the thumbnails.</aside>
+    </section>
+
+    <!-- Slide 4: Empathy & Life Skills (context) -->
+    <section class="slide flex items-center p-8 bg-gradient-to-br from-[#101820] to-[#0A1F3D]">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center fade-enter">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-bold">Beyond class: empathy & life skills</h2>
+          <p class="mt-4 text-lg opacity-90">VR can place learners in perspectives and situations they can't otherwise access—building understanding and decision-making.</p>
+          <ul class="mt-6 space-y-3">
+            <li>• Autismity / In the Shoes of an Autistic Person</li>
+            <li>• Conflict resolution & de-escalation practice</li>
+            <li>• Diversity, equity, inclusion scenarios</li>
+            <li>• Emergency response & preparedness</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+          <h3 class="text-xl font-semibold">Quick demo structure</h3>
+          <ol class="list-decimal list-inside mt-3 space-y-2 opacity-90">
+            <li>90-second empathy clip</li>
+            <li>Hands-on task (e.g., CPR hand placement)</li>
+            <li>Guided field trip in MR (blend real room + model)</li>
+          </ol>
+          <p class="mt-4 text-sm opacity-70">Keep each demo under 2–3 minutes to fit group sessions.</p>
+        </div>
+      </div>
+      <aside class="presenter-notes hidden">If time is short, run just the empathy clip and one task demo.</aside>
+    </section>
+
+    <!-- Slide 5: Our Lab -->
+    <section class="slide flex items-center p-8 bg-slate-950">
+      <div class="max-w-5xl mx-auto text-center fade-enter">
+        <h2 class="text-3xl md:text-5xl font-bold">Lone Star XR Lab — Room E251</h2>
+        <p class="mt-4 text-lg opacity-90">8 student Meta Quest 3 headsets + 1 instructor unit • Bookable sessions • Faculty onboarding</p>
+        <div class="mt-8 grid md:grid-cols-3 gap-4 text-left">
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="font-semibold">Try It</h3>
+            <p class="opacity-80">Short 10–15 minute experiences for classes or open lab time.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="font-semibold">Curriculum Align</h3>
+            <p class="opacity-80">Pick apps aligned to your outcomes; we’ll help with setup.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 class="font-semibold">Safety & Comfort</h3>
+            <p class="opacity-80">Seated options, hygiene covers, accessibility modes, clear boundaries.</p>
+          </div>
+        </div>
+        <div class="mt-10">
+          <a href="#" class="inline-block px-5 py-3 rounded-xl bg-brand-accent text-black font-semibold">Book the lab</a>
+          <a href="#" class="ml-3 inline-block px-5 py-3 rounded-xl bg-white/10 border border-white/15">View App Library</a>
+        </div>
+      </div>
+      <aside class="presenter-notes hidden">Plug in your booking link + app library. Mention E251 and times.</aside>
+    </section>
+
+    <!-- Slide 6: Safety & Accessibility -->
+    <section class="slide flex items-center p-8 bg-gradient-to-b from-slate-800 to-slate-950">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start fade-enter">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-bold">Safety, comfort, accessibility</h2>
+          <ul class="mt-6 space-y-3 text-lg">
+            <li>Boundary setup & seated options</li>
+            <li>Hygiene covers & cleaning workflow</li>
+            <li>Motion comfort levels labeled per app</li>
+            <li>Color/contrast options & subtitles when available</li>
+            <li>Clear supervision and check-in/out process</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+          <h3 class="text-xl font-semibold">Operational flow</h3>
+          <ol class="list-decimal list-inside mt-3 space-y-2 opacity-90">
+            <li>Check-in → station assignment</li>
+            <li>Fit headset • set boundary • quick comfort brief</li>
+            <li>Run experience • assist as needed</li>
+            <li>Sanitize • log session • feedback</li>
+          </ol>
+        </div>
+      </div>
+      <aside class="presenter-notes hidden">Reassure faculty: XR can be run safely and predictably.</aside>
+    </section>
+
+    <!-- Slide 7: Call to Action -->
+    <section class="slide flex items-center justify-center p-8 bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-brand-accent via-sky-200 to-purple-300">
+      <div class="max-w-4xl w-full text-center text-black fade-enter">
+        <h2 class="text-3xl md:text-5xl font-extrabold">Ready to explore?</h2>
+        <p class="mt-4 text-lg">Bring your class for a short session, or pilot a module aligned to your course.</p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="#" class="px-5 py-3 rounded-xl bg-black text-white">Book the Lab</a>
+          <a href="#" class="px-5 py-3 rounded-xl border border-black/40">See App Library</a>
+          <a href="#" class="px-5 py-3 rounded-xl border border-black/40">Faculty Onboarding</a>
+        </div>
+        <p class="mt-8 text-sm opacity-80">Room E251 • Tomball Campus • XR Lab</p>
+      </div>
+      <aside class="presenter-notes hidden">Close strong; invite immediate next step.</aside>
+    </section>
+
+  </main>
+
+  <!-- Quick Controls (bottom-right) -->
+  <div class="no-print fixed bottom-4 right-4 z-[60] flex items-center gap-2">
+    <button id="btnNotes" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-sm">P</button>
+    <button id="btnGrid" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-sm">G</button>
+    <button id="btnFS" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-sm">F</button>
+  </div>
+
+  <!-- Slide Grid Overlay -->
+  <div id="gridOverlay" class="no-print fixed inset-0 bg-black/70 backdrop-blur hidden z-[70] p-6 overflow-auto">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold">Jump to a slide</h3>
+        <button id="gridClose" class="px-3 py-1 rounded bg-white/10 hover:bg-white/20">Close</button>
+      </div>
+      <div id="grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    </div>
+  </div>
+  <script src="assets/js/app.js"></script>
+
+
+</body>
+</html>
