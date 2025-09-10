@@ -24,24 +24,17 @@ body { background: #0B1220; }
 
 /* Aspect ratio helper (so we don't rely on Tailwind plugin) */
 .aspect-video { position: relative; width: 100%; padding-top: 56.25%; }
-.aspect-video > iframe, .aspect-video > video {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-}
-
-/* Brand helpers (if you need them in custom CSS) */
-.bg-brand-dark { background-color: var(--brand); }
-.text-brand-accent { color: var(--accent); }
-.bg-brand-accent { background-color: var(--accent); }
-
-/* Aspect ratio helper */
-.aspect-video { position: relative; width: 100%; padding-top: 56.25%; }
-
 .aspect-video > iframe,
 .aspect-video > video,
 .aspect-video > img,
 .aspect-video > svg {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
 }
+
+/* Brand helpers */
+.bg-brand-dark { background-color: var(--brand); }
+.text-brand-accent { color: var(--accent); }
+.bg-brand-accent { background-color: var(--accent); }
 
 /* Cycling gallery helpers */
 .cycle-tile { cursor: pointer; }
@@ -70,30 +63,101 @@ body { background: #0B1220; }
 
 /* ==== Slide 0: TV-friendly larger tiles ==== */
 .hero-wrap { max-width: min(1800px, 95vw); margin-inline: auto; }
-
-.hero-grid { 
-  display: grid; 
-  gap: 1.25rem;            /* tighter gaps to give space to media */
-}
-@media (min-width: 768px) { 
-  .hero-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; } 
+.hero-grid { display: grid; gap: 1.25rem; }
+@media (min-width: 768px) {
+  .hero-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; }
 }
 
 /* Make tiles tall relative to viewport height (fills the TV nicely) */
 .hero-tile {
   position: relative;
   width: 100%;
-  height: clamp(280px, 36vh, 640px);   /* <= tweak this if you want even larger */
+  height: clamp(280px, 36vh, 640px);
   border-radius: 1rem;
   overflow: hidden;
 }
 
 /* Ensure media fills the tile even without aspect-video helper */
-.hero-tile .cycle-media { 
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; 
+.hero-tile .cycle-media {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
 }
 
-/* Optional: bump captions slightly for distance viewing */
-@media (min-width: 1024px) {
-  .hero-caption { font-size: 0.95rem; }
+/* ===========================
+   TV TYPOGRAPHY SCALE (global)
+   =========================== */
+
+/* 1) Scale the base rem size on big screens (auto-scales Tailwind text- classes) */
+@media (min-width: 1280px) and (min-height: 720px) {
+  html { font-size: 20px; }   /* 16 -> 20px (1.25x) */
 }
+@media (min-width: 1600px) and (min-height: 900px) {
+  html { font-size: 22px; }   /* ~1.375x */
+}
+@media (min-width: 1920px) and (min-height: 1080px) {
+  html { font-size: 24px; }   /* 1.5x */
+}
+
+/* 2) Force larger heading/body sizes on slides (override Tailwind with higher specificity) */
+.deck .slide h1 {
+  font-size: clamp(2.8rem, 5vw, 5rem) !important;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.deck .slide h2 {
+  font-size: clamp(2.2rem, 3.6vw, 3.75rem) !important;
+  line-height: 1.15;
+}
+.deck .slide h3 {
+  font-size: clamp(1.4rem, 2.2vw, 2.25rem) !important;
+  line-height: 1.2;
+}
+.deck .slide p,
+.deck .slide li {
+  font-size: clamp(1.1rem, 1.4vw, 1.6rem) !important;
+  line-height: 1.5;
+}
+
+/* Tiny labels (e.g., footnotes) */
+.deck .slide .text-sm { 
+  font-size: clamp(1rem, 1.1vw, 1.25rem) !important;
+}
+
+/* 3) List spacing for distance readability */
+.deck .slide ul:not([class*="list-"]),
+.deck .slide ol:not([class*="list-"]) {
+  margin-top: 0.75rem;
+}
+.deck .slide li { margin-top: 0.4rem; }
+
+/* 4) Cycle tile badges & hints (Slide 0) a touch larger on TV */
+.cycle-badge { font-size: 0.875rem; }
+.cycle-hint  { font-size: 0.875rem; }
+
+/* 5) Centered captions under the big tiles */
+.hero-caption { font-size: clamp(1rem, 1.2vw, 1.35rem); }
+
+/* ===== Compact Top Bar (keep header small so slides dominate) ===== */
+#banner { backdrop-filter: blur(8px); }
+
+/* tighten padding */
+#banner > .max-w-7xl {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+/* smaller text inside the bar (overrides TV scaling for header) */
+#banner .text-sm { font-size: 0.8rem !important; }
+#banner .font-semibold { font-size: 0.85rem !important; }
+
+/* smaller buttons */
+#banner button {
+  font-size: 0.85rem !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 0.5rem !important;
+}
+
+/* thinner progress bar */
+#banner .h-1 { height: 2px !important; }
+
+/* optionally hide long hints line if you add class="banner-hints" in HTML */
+#banner .banner-hints { display: none !important; }
