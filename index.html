@@ -29,12 +29,9 @@
       id="banner"
       class="no-print sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur text-white"
     >
-      <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-3 text-sm">
+      <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-2 text-sm">
         <span class="font-semibold">XR Showcase</span>
-        <span class="opacity-80"
-          >Use ↑ ↓ or ◀ ▶ to navigate • Press F to go full screen • P to toggle
-          Presenter Notes • G to jump to slide</span
-        >
+
         <div class="ml-auto flex gap-2 items-center">
           <button
             id="btnPrev"
@@ -48,6 +45,24 @@
           >
             Next
           </button>
+          <button
+            id="btnAuto"
+            class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20"
+          >
+            Auto Off
+          </button>
+          <button
+            id="btnBar"
+            class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20"
+          >
+            Hide Bar
+          </button>
+          <button
+            id="btnFS"
+            class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20"
+          >
+            Full
+          </button>
         </div>
       </div>
       <!-- Progress bar -->
@@ -55,6 +70,15 @@
         <div id="progress" class="h-1 bg-brand-accent w-0"></div>
       </div>
     </div>
+
+    <!-- Floating "Show Bar" button (only visible when bar is hidden) -->
+<button
+  id="btnBarGhost"
+  class="no-print fixed top-2 right-2 z-[70] hidden px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 border border-white/15 text-sm"
+  aria-label="Show top bar"
+>
+  Show Bar
+</button>
 
     <main id="deck" class="deck">
       <!-- Slide 0: Title (VR/AR/MR GIF galleries, TV-sized, centered captions) -->
@@ -653,18 +677,6 @@
     <!-- Quick Controls (bottom-right) -->
     <div class="no-print fixed bottom-4 right-4 z-[60] flex items-center gap-2">
       <button
-        id="btnNotes"
-        class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-sm"
-      >
-        P
-      </button>
-      <button
-        id="btnGrid"
-        class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-sm"
-      >
-        G
-      </button>
-      <button
         id="btnFS"
         class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-sm"
       >
@@ -672,27 +684,6 @@
       </button>
     </div>
 
-    <!-- Slide Grid Overlay -->
-    <div
-      id="gridOverlay"
-      class="no-print fixed inset-0 bg-black/70 backdrop-blur hidden z-[70] p-6 overflow-auto"
-    >
-      <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-semibold">Jump to a slide</h3>
-          <button
-            id="gridClose"
-            class="px-3 py-1 rounded bg-white/10 hover:bg-white/20"
-          >
-            Close
-          </button>
-        </div>
-        <div
-          id="grid"
-          class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        ></div>
-      </div>
-    </div>
     <script src="assets/js/app.js"></script>
   </body>
 </html>

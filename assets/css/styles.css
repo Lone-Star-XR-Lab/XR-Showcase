@@ -2,9 +2,9 @@
 html, body { height: 100%; }
 body { background: #0B1220; }
 
-/* Slide basics */
-.slide { height: 100dvh; width: 100%; scroll-snap-align: start; }
-.deck { scroll-snap-type: y mandatory; overflow-y: auto; height: 100dvh; }
+/* Slide basics — allow slides to be taller than the viewport */
+.slide { min-height: 100dvh; width: 100%; scroll-snap-align: start; scroll-margin-top: 56px; }
+.deck  { scroll-snap-type: y proximity; overflow-y: auto; height: 100dvh; overscroll-behavior-y: contain; scroll-padding-top: 56px; }
 
 /* Print: one slide per page */
 @media print {
@@ -118,7 +118,7 @@ body { background: #0B1220; }
 }
 
 /* Tiny labels (e.g., footnotes) */
-.deck .slide .text-sm { 
+.deck .slide .text-sm {
   font-size: clamp(1rem, 1.1vw, 1.25rem) !important;
 }
 
@@ -161,3 +161,17 @@ body { background: #0B1220; }
 
 /* optionally hide long hints line if you add class="banner-hints" in HTML */
 #banner .banner-hints { display: none !important; }
+
+/* Hide/Show banner toggle (button) */
+body.banner-hidden #banner { display: none !important; }
+body.banner-hidden .deck  { scroll-padding-top: 0 !important; }
+body.banner-hidden .slide { scroll-margin-top: 0 !important; }
+
+/* Floating restore button for hidden banner */
+#btnBarGhost { display: none; }
+body.banner-hidden #btnBarGhost { display: inline-flex !important; }
+
+/* When the banner is hidden, remove the top snap/padding so slides align */
+body.banner-hidden #banner { display: none !important; }
+body.banner-hidden .deck  { scroll-padding-top: 0 !important; }
+body.banner-hidden .slide { scroll-margin-top: 0 !important; }
