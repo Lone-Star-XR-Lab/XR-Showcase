@@ -67,3 +67,33 @@ body { background: #0B1220; }
   content: 'Loading…'; font-size: 0.9rem; opacity: 0.8;
 }
 .hidden { display: none !important; }
+
+/* ==== Slide 0: TV-friendly larger tiles ==== */
+.hero-wrap { max-width: min(1800px, 95vw); margin-inline: auto; }
+
+.hero-grid { 
+  display: grid; 
+  gap: 1.25rem;            /* tighter gaps to give space to media */
+}
+@media (min-width: 768px) { 
+  .hero-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; } 
+}
+
+/* Make tiles tall relative to viewport height (fills the TV nicely) */
+.hero-tile {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 36vh, 640px);   /* <= tweak this if you want even larger */
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Ensure media fills the tile even without aspect-video helper */
+.hero-tile .cycle-media { 
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; 
+}
+
+/* Optional: bump captions slightly for distance viewing */
+@media (min-width: 1024px) {
+  .hero-caption { font-size: 0.95rem; }
+}
