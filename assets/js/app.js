@@ -272,8 +272,8 @@
 const MEDIA_SETS = {
   vr: [
     // Add local files if you have them: 'images/vr-1.gif','images/vr-2.gif',
-    'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWl3MXFjN2p4djdhcmQzZmpqd2Z2bTI0Mnh4N29oem5nZTRtbXpmYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xTiN0AVV7Ebad21L7q/giphy.gif',
-    'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHdoM2l1cmZnOGVlMm8yNTBqcHBkZzZoOHQyMXVjNXdmdWI3cHkzaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fLmq9Neevz5fGFP6Gw/giphy.gif'
+    'images/vr-fLmq9Neevz5fGFP6Gw.webp',
+    'images/vr-xTiN0AVV7Ebad21L7q.webp',
   ],
   ar: [
     'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTg3NWZmYThqNWNwenZjejM3MGU1dDdkYnpidDN2ZmM2eG1nNnF6bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L0w91gyGwvLLXJQK9E/giphy.gif',
