@@ -1,85 +1,93 @@
 <section class="slide p-8 bg-gradient-to-br from-slate-900 to-slate-950">
-  <div class="max-w-7xl mx-auto fade-enter">
-    <h2 class="font-bold text-center">Hardware — Headsets & Controllers (Interactive 3D)</h2>
+  <div class="max-w-7xl mx-auto fade-enter h-full grid grid-rows-[auto,1fr]">
+    <h2 class="font-bold text-center">Hardware — Standalone VR • PCVR • AR (Glasses / Phone / Other)</h2>
 
-    <div class="mt-8 grid md:grid-cols-3 gap-5">
-
-      <!-- Headset (3D) -->
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <h3 class="text-xl font-semibold mb-3">Standalone Headset</h3>
-        <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
-          <model-viewer
-            src="models/quest 3.glb"
-            poster="images/hardware/quest3.jpg"
-            camera-controls
-            auto-rotate
-            ar
-            ar-modes="webxr scene-viewer quick-look"
-            touch-action="pan-y"
-            shadow-intensity="1"
-            exposure="1"
-            style="position:absolute; inset:0; width:100%; height:100%;"
-            data-fallback-src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb">
-          </model-viewer>
+    <div class="mt-6 grid gap-5 content-start">
+      <!-- VR row (2) -->
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- Standalone VR -->
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+          <h3 class="text-xl font-semibold mb-3">Standalone VR</h3>
+          <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+            <img
+              src="images/hardware/meta-quest-3.avif"
+              alt="Standalone VR headset"
+              class="absolute inset-0 w-full h-full object-cover"
+              onerror="this.style.display='none'"/>
+          </div>
+          <ul class="space-y-2 opacity-90 mt-3">
+            <li>All-in-one (no PC required).</li>
+            <li>Color passthrough → mixed reality.</li>
+          </ul>
         </div>
-        <ul class="space-y-2 opacity-90 mt-3">
-          <li>Spin, zoom, and inspect the device.</li>
-          <li>Color passthrough enables mixed reality.</li>
-          <li>Hand tracking + controllers supported.</li>
-        </ul>
+
+        <!-- PCVR -->
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+          <h3 class="text-xl font-semibold mb-3">PCVR</h3>
+          <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+            <img
+              src="images/hardware/Bigscreen-Beyond-2-in-Nuclear-Orange.webp"
+              alt="PCVR headset connected to a computer"
+              class="absolute inset-0 w-full h-full object-cover"
+              onerror="this.style.display='none'"/>
+          </div>
+          <ul class="space-y-2 opacity-90 mt-3">
+            <li>Desktop-GPU fidelity & mods.</li>
+            <li>Great for simulation & CAD.</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Controllers (3D) -->
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <h3 class="text-xl font-semibold mb-3">Controllers</h3>
-        <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
-          <model-viewer
-            src="/models/quest3-controllers.glb"
-            poster="images/hardware/controllers.jpg"
-            camera-controls
-            auto-rotate
-            ar
-            ar-modes="webxr scene-viewer quick-look"
-            touch-action="pan-y"
-            shadow-intensity="1"
-            exposure="1"
-            style="position:absolute; inset:0; width:100%; height:100%;"
-            data-fallback-src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb">
-          </model-viewer>
+      <!-- AR row (3) -->
+      <div class="grid md:grid-cols-3 gap-5">
+        <!-- AR Glasses -->
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+          <h3 class="text-xl font-semibold mb-3">AR Glasses</h3>
+          <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+            <img
+              src="images/hardware/glasses-gear--2.webp"
+              alt="AR glasses hardware"
+              class="absolute inset-0 w-full h-full object-cover"
+              onerror="this.style.display='none'"/>
+          </div>
+          <ul class="space-y-2 opacity-90 mt-3">
+            <li>Heads-up overlays, hands-free.</li>
+            <li>Prompts, captions, diagrams.</li>
+          </ul>
         </div>
-        <ul class="space-y-2 opacity-90 mt-3">
-          <li>Precise input for painting & simulators.</li>
-          <li>Haptics, triggers, and sticks.</li>
-          <li>Great for fine motor control tasks.</li>
-        </ul>
-      </div>
 
-      <!-- AR Glasses (optional 3D) -->
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <h3 class="text-xl font-semibold mb-3">AR Glasses</h3>
-        <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
-          <model-viewer
-            src="models/ar-glasses.glb"
-            poster="images/hardware/ar-glasses.jpg"
-            camera-controls
-            auto-rotate
-            ar
-            ar-modes="webxr scene-viewer quick-look"
-            touch-action="pan-y"
-            shadow-intensity="1"
-            exposure="1"
-            style="position:absolute; inset:0; width:100%; height:100%;"
-            data-fallback-src="https://modelviewer.dev/shared-assets/models/Chair.glb">
-          </model-viewer>
+        <!-- Phone / Tablet AR -->
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+          <h3 class="text-xl font-semibold mb-3">Phone / Tablet AR</h3>
+          <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+            <img
+              src="images/hardware/pokemon-go-augmented-reality.jpg"
+              alt="Phone AR object placed on desk"
+              class="absolute inset-0 w-full h-full object-cover"
+              onerror="this.style.display='none'"/>
+          </div>
+          <ul class="space-y-2 opacity-90 mt-3">
+            <li>No headset needed (iOS/Android).</li>
+            <li>Plane & image tracking via camera.</li>
+          </ul>
         </div>
-        <ul class="space-y-2 opacity-90 mt-3">
-          <li>Lightweight, heads-up info.</li>
-          <li>Great for prompts, captions, diagrams.</li>
-          <li>Powered by phone/PC (varies by model).</li>
-        </ul>
-      </div>
 
+        <!-- Other AR Surfaces -->
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+          <h3 class="text-xl font-semibold mb-3">Other AR Surfaces</h3>
+          <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+            <img
+              src="images/hardware/car-hud.webp"
+              alt="HUDs, kiosks, projection mapping"
+              class="absolute inset-0 w-full h-full object-cover"
+              onerror="this.style.display='none'"/>
+          </div>
+          <ul class="space-y-2 opacity-90 mt-3">
+            <li>HUDs, kiosks, smart displays.</li>
+            <li>Projection mapping & wayfinding.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
