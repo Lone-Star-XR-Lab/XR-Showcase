@@ -374,3 +374,134 @@ function initCycleTiles() {
     initCycleTile(tile, tile.dataset.kind);
   });
 }
+
+/* ============================================================
+   FIT SLIDES TO VIEWPORT (no content taller than 100% view)
+   Drop this at the end of assets/js/app.js
+   ============================================================ */
+
+(function fitSlidesModule(){
+  const deck  = document.getElementById('deck');
+  if (!deck) return;
+
+  // Helper: banner height → CSS var (so snap offsets work)
+  function setBannerHeightVar() {
+    const b = document.getElementById('banner');
+    const h = b && getComputedStyle(b).display !== 'none' ? b.offsetHeight : 0;
+    document.documentElement.style.setProperty('--banner-h', `${h}px`);
+    return h;
+  }
+
+  // Wrap each slide’s contents into .fit > .fit-inner (once)
+  function wrapSlides() {
+    const slides = deck.querySelectorAll('.slide');
+    slides.forEach(slide => {
+      if (slide.dataset.fitWrapped === '1') return;
+
+      // Create wrappers
+      const fit = document.createElement('div');
+      fit.className = 'fit';
+      const inner = document.createElement('div');
+      inner.className = 'fit-inner';
+
+      // Move all existing children into inner
+      // (preserves your slide content exactly as-is)
+      while (slide.firstChild) inner.appendChild(slide.firstChild);
+
+      // Attach wrappers
+      fit.appendChild(inner);
+      slide.appendChild(fit);
+
+      slide.dataset.fitWrapped = '1';
+    });
+  }
+
+  // Measure natural (unscaled) height of the .fit-inner
+  function measureInnerHeight(inner) {
+    const prev = inner.style.transform;
+    inner.style.transform = 'none';
+    // Force reflow & measure
+    const h = inner.offsetHeight;
+    // Restore any transform
+    inner.style.transform = prev;
+    return h;
+  }
+
+  // Scale one slide to fit its available box
+  function fitSlide(slide, bannerH) {
+    const fit   = slide.querySelector(':scope > .fit');
+    const inner = fit && fit.querySelector(':scope > .fit-inner');
+    if (!fit || !inner) return;
+
+    // Available height = slide’s inner box minus the slide’s own paddings.
+    // Slide is exactly 100dvh tall. If there is a sticky banner above the deck
+    // that overlaps visually, we already compensated via scroll-margin/padding,
+    // but we still compute actual visible box from the slide itself.
+    const slideStyles = getComputedStyle(slide);
+    const padTop    = parseFloat(slideStyles.paddingTop) || 0;
+    const padBottom = parseFloat(slideStyles.paddingBottom) || 0;
+    const available = slide.clientHeight - padTop - padBottom;
+
+    // Natural content height (unscaled)
+    const naturalH = measureInnerHeight(inner);
+
+    // Scale so it fits available height (never scale up past 1)
+    const scale = Math.min(1, available / Math.max(1, naturalH));
+
+    // Apply transform
+    inner.style.transform = `scale(${scale})`;
+
+    // Center nicely inside the .fit box
+    fit.style.alignItems = scale < 1 ? 'start' : 'center'; // start looks better when we shrunk
+  }
+
+  // Fit all slides now
+  function fitAllSlides() {
+    const bannerH = setBannerHeightVar();
+    deck.querySelectorAll('.slide').forEach(slide => fitSlide(slide, bannerH));
+  }
+
+  // Refit on window resize / orientation change
+  window.addEventListener('resize', fitAllSlides, { passive: true });
+
+  // If your app has a button that shows/hides the bar, make sure it calls:
+  //   document.body.classList.toggle('banner-hidden', true/false);
+  // We’ll observe for that and refit automatically.
+  const bodyObserver = new MutationObserver(fitAllSlides);
+  bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  // Refit when deck children change (e.g., slides loaded from manifest)
+  const deckObserver = new MutationObserver(() => {
+    wrapSlides();
+    wireMediaLoadRefit();
+    fitAllSlides();
+  });
+  deckObserver.observe(deck, { childList: true, subtree: false });
+
+  // Refit when media finishes loading (images, videos)
+  function wireMediaLoadRefit() {
+    deck.querySelectorAll('.slide img').forEach(img => {
+      if (img.dataset.fitListen === '1') return;
+      img.dataset.fitListen = '1';
+      img.addEventListener('load', fitAllSlides, { passive: true });
+    });
+    deck.querySelectorAll('.slide video').forEach(v => {
+      if (v.dataset.fitListen === '1') return;
+      v.dataset.fitListen = '1';
+      v.addEventListener('loadedmetadata', fitAllSlides, { passive: true });
+      v.addEventListener('loadeddata', fitAllSlides, { passive: true });
+    });
+  }
+
+  // Initial run (in case slides are already present)
+  wrapSlides();
+  wireMediaLoadRefit();
+  // Fit after the page finishes loading all assets (fonts can affect height)
+  if (document.readyState === 'complete') {
+    fitAllSlides();
+  } else {
+    window.addEventListener('load', fitAllSlides, { once: true });
+    // Also run shortly after DOM is ready to feel snappy
+    document.addEventListener('DOMContentLoaded', () => setTimeout(fitAllSlides, 0), { once: true });
+  }
+})();

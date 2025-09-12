@@ -196,3 +196,29 @@ body.banner-hidden #btnBarGhost { display: inline-flex !important; }
 /* Show ghost button only when the banner is hidden */
 #btnBarGhost                    { display: none; }
 body.banner-hidden #btnBarGhost { display: inline-flex !important; }
+
+/* Always one screen tall */
+.slide { height: 100dvh; }
+
+/* Fit-to-viewport scaffolding added by JS */
+.fit {
+  /* reserve space equal to the scaled content so the slide itself stays one screen */
+  display: grid;
+  place-items: center;          /* center; change to start if you prefer top align */
+  width: 100%;
+  height: 100%;                 /* this is the target box the inner content must fit into */
+  overflow: hidden;             /* hide any rounding artifacts */
+}
+.fit-inner {
+  transform-origin: top center; /* we scale this element */
+  will-change: transform;
+}
+
+/* Optional: crisp snapping now that slides never exceed 100vh */
+.deck { scroll-snap-type: y mandatory; }
+.slide { scroll-snap-align: start; }
+
+/* Top bar height variable (JS updates this) */
+:root { --banner-h: 0px; }
+.deck  { scroll-padding-top: var(--banner-h); }
+.slide { scroll-margin-top: var(--banner-h); }
