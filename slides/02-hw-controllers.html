@@ -1,0 +1,53 @@
+<section class="slide p-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-black">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center fade-enter">
+
+    <!-- Text / bullets -->
+    <div>
+      <h2 class="font-bold">Controllers & Hand Tracking</h2>
+      <ul class="mt-6 space-y-4">
+        <li>🎯 <span class="font-semibold">Precision input</span> for painting, CAD, and simulators.</li>
+        <li>🤲 <span class="font-semibold">Pinch, grab, point</span> — intuitive hand gestures.</li>
+        <li>🎮 <span class="font-semibold">Triggers, sticks, haptics</span> for fine control.</li>
+        <li>🗣️ <span class="font-semibold">Voice support</span> in many apps for quick actions.</li>
+      </ul>
+    </div>
+
+    <!-- Two models side-by-side -->
+    <div>
+      <div class="grid grid-cols-2 gap-3">
+        <!-- Left controller -->
+        <div class="relative w-full rounded-xl overflow-hidden border border-white/10" style="padding-top:100%;">
+          <model-viewer
+            src="/models/touch plus controller l.glb"
+            poster="images/hardware/controllers.jpg"
+            camera-controls
+            auto-rotate
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            touch-action="pan-y"
+            shadow-intensity="1"
+            exposure="1"
+            aria-label="Left controller"
+            style="position:absolute; inset:0; width:100%; height:100%;"></model-viewer>
+        </div>
+
+        <!-- Right controller -->
+        <div class="relative w-full rounded-xl overflow-hidden border border-white/10" style="padding-top:100%;">
+          <model-viewer
+            src="/models/touch plus controler r.glb"
+            poster="images/hardware/controllers.jpg"
+            camera-controls
+            auto-rotate
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            touch-action="pan-y"
+            shadow-intensity="1"
+            exposure="1"
+            aria-label="Right controller"
+            style="position:absolute; inset:0; width:100%; height:100%;"></model-viewer>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

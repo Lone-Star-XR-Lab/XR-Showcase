@@ -1,79 +1,85 @@
 <section class="slide p-8 bg-gradient-to-br from-slate-900 to-slate-950">
   <div class="max-w-7xl mx-auto fade-enter">
-    <h2 class="font-bold text-center">Hardware — Headsets & AR Gear</h2>
+    <h2 class="font-bold text-center">Hardware — Headsets & Controllers (Interactive 3D)</h2>
 
     <div class="mt-8 grid md:grid-cols-3 gap-5">
-      <!-- Standalone VR/MR headset -->
+
+      <!-- Headset (3D) -->
       <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <h3 class="text-xl font-semibold mb-3">Standalone Headset (VR/MR)</h3>
-        <img class="thumb border border-white/10 mb-3" alt="Standalone headset"
-             src="images/hardware/quest3.jpg" onerror="this.style.display='none'"/>
-        <ul class="space-y-2 opacity-90">
-          <li>Runs apps with no PC; fast to set up.</li>
-          <li>Color passthrough for mixed reality.</li>
-          <li>Hand tracking + controllers.</li>
+        <h3 class="text-xl font-semibold mb-3">Standalone Headset</h3>
+        <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+          <model-viewer
+            src="/models/quest 3.glb"
+            poster="images/hardware/quest3.jpg"
+            camera-controls
+            auto-rotate
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            touch-action="pan-y"
+            shadow-intensity="1"
+            exposure="1"
+            style="position:absolute; inset:0; width:100%; height:100%;"
+            data-fallback-src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb">
+          </model-viewer>
+        </div>
+        <ul class="space-y-2 opacity-90 mt-3">
+          <li>Spin, zoom, and inspect the device.</li>
+          <li>Color passthrough enables mixed reality.</li>
+          <li>Hand tracking + controllers supported.</li>
         </ul>
       </div>
 
-      <!-- Controllers & hand tracking -->
+      <!-- Controllers (3D) -->
       <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <h3 class="text-xl font-semibold mb-3">Control: Hands & Controllers</h3>
-        <img class="thumb border border-white/10 mb-3" alt="Controllers & hands"
-             src="images/hardware/controllers.jpg" onerror="this.style.display='none'"/>
-        <ul class="space-y-2 opacity-90">
-          <li>Pinch/tap gestures for menus & tools.</li>
-          <li>Precise controllers for painting & surgery sims.</li>
-          <li>Voice input in many apps.</li>
+        <h3 class="text-xl font-semibold mb-3">Controllers</h3>
+        <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+          <model-viewer
+            src="/models/quest3-controllers.glb"
+            poster="images/hardware/controllers.jpg"
+            camera-controls
+            auto-rotate
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            touch-action="pan-y"
+            shadow-intensity="1"
+            exposure="1"
+            style="position:absolute; inset:0; width:100%; height:100%;"
+            data-fallback-src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb">
+          </model-viewer>
+        </div>
+        <ul class="space-y-2 opacity-90 mt-3">
+          <li>Precise input for painting & simulators.</li>
+          <li>Haptics, triggers, and sticks.</li>
+          <li>Great for fine motor control tasks.</li>
         </ul>
       </div>
 
-      <!-- Passthrough & spatial anchors -->
+      <!-- AR Glasses (optional 3D) -->
       <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <h3 class="text-xl font-semibold mb-3">Passthrough & Spatial Anchors</h3>
-        <img class="thumb border border-white/10 mb-3" alt="Mixed Reality passthrough"
-             src="images/hardware/passthrough.jpg" onerror="this.style.display='none'"/>
-        <ul class="space-y-2 opacity-90">
-          <li>Blend 3D models into your real room.</li>
-          <li>Pin content to desks, walls, and floors.</li>
-          <li>Safer, more social demos.</li>
+        <h3 class="text-xl font-semibold mb-3">AR Glasses</h3>
+        <div class="aspect-video rounded-xl overflow-hidden border border-white/10">
+          <model-viewer
+            src="/models/ar-glasses.glb"
+            poster="images/hardware/ar-glasses.jpg"
+            camera-controls
+            auto-rotate
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            touch-action="pan-y"
+            shadow-intensity="1"
+            exposure="1"
+            style="position:absolute; inset:0; width:100%; height:100%;"
+            data-fallback-src="https://modelviewer.dev/shared-assets/models/Chair.glb">
+          </model-viewer>
+        </div>
+        <ul class="space-y-2 opacity-90 mt-3">
+          <li>Lightweight, heads-up info.</li>
+          <li>Great for prompts, captions, diagrams.</li>
+          <li>Powered by phone/PC (varies by model).</li>
         </ul>
       </div>
 
-      <!-- AR glasses (viewer) -->
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <h3 class="text-xl font-semibold mb-3">AR Glasses (Viewer)</h3>
-        <img class="thumb border border-white/10 mb-3" alt="AR glasses"
-             src="images/hardware/ar-glasses.jpg" onerror="this.style.display='none'"/>
-        <ul class="space-y-2 opacity-90">
-          <li>Lightweight displays powered by phone/PC.</li>
-          <li>Great for heads-up info & media.</li>
-          <li>Emerging classroom use.</li>
-        </ul>
-      </div>
-
-      <!-- PC VR option -->
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <h3 class="text-xl font-semibold mb-3">PC VR (Optional)</h3>
-        <img class="thumb border border-white/10 mb-3" alt="PC VR"
-             src="images/hardware/pcvr.jpg" onerror="this.style.display='none'"/>
-        <ul class="space-y-2 opacity-90">
-          <li>Tethers to PC for high-end visuals.</li>
-          <li>Used for advanced sims & CAD.</li>
-          <li>Less portable than standalone.</li>
-        </ul>
-      </div>
-
-      <!-- Accessories -->
-      <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-        <h3 class="text-xl font-semibold mb-3">Extras</h3>
-        <img class="thumb border border-white/10 mb-3" alt="Accessories"
-             src="images/hardware/accessories.jpg" onerror="this.style.display='none'"/>
-        <ul class="space-y-2 opacity-90">
-          <li>Prescription inserts & spacers for glasses.</li>
-          <li>Battery straps for longer sessions.</li>
-          <li>Face gaskets for comfort & hygiene.</li>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
+
